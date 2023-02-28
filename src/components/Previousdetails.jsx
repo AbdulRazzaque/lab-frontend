@@ -23,7 +23,7 @@ const Previousdetails = () => {
    
    <DesktopDatePicker
    className="my-2 mx-2"
-     label="Date desktop"
+     label="To"
      inputFormat="MM/DD/YYYY"
      value={value}
      onChange={handleChange}
@@ -33,7 +33,7 @@ const Previousdetails = () => {
    
    <DesktopDatePicker
    className="my-2"
-     label="Date desktop"
+     label="From"
      inputFormat="MM/DD/YYYY"
      value={value}
      onChange={handleChange}
