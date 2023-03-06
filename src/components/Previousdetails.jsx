@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import MaterialTable from "material-table";
 import dayjs from 'dayjs';
@@ -6,12 +6,28 @@ import { Button, createTheme, TextField, ThemeProvider } from '@mui/material'
 import { DesktopDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 const Previousdetails = () => {
     const defaultMaterialTheme = createTheme();
+    const [data, setData] = useState([]);
     const [value, setValue] = React.useState(dayjs());
     const handleChange = (newValue) => {
       setValue(newValue);
     };
+    const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZiMDY5ZjJjN2NkYzQwYWI3ZDQ3NDMiLCJpYXQiOjE2NzczOTU2MTUsImV4cCI6MTY3NzQ4MjAxNX0.oyFYN4ItsvjR8Gnspn9P2s3jLvqlkWXRPGDUukeQ_jE"
+
+    const  alldata =()=>{
+      axios.get(`${process.env.REACT_APP_DEVELOPMENT}/api/item`,data,
+     {headers:{token:`${accessToken}`}})
+     .then(response=>{
+       console.log('Response',response)
+       setData(response.data)
+     })
+  }
+
+  useEffect(()=>{
+  alldata()
+},[])
   return (
     <div>
         <Navbar/>
@@ -51,19 +67,25 @@ const Previousdetails = () => {
       title="Details"
       columns={[
         { title: 'Name', field: 'name' },
-        { title: 'work-order', field: 'wor-order', initialEditValue: 'initial edit value' },
-        { title: 'Sample', field: 'Sample'},
-        { title: 'Test', field: 'Test'},
-        { title: 'Type', field: 'Type'},
-        { title: 'Date', field: 'Date'},
-        { title: 'lab', field: 'lab'},
+        { title: 'work-order', field: 'workOder' },
+        { title: 'Sample', field: 'noofSample'},
+        { title: 'Test', field: 'requiredTest'},
+        { title: 'Type', field: 'sampleType'},
+      { title: 'lab', field: 'lab'},
+      { title: 'Date', field: 'date',
+      type: 'date',
+      dateSetting: {
+        format: 'yyyy/mm/dd'
+      },
+    },
       ]}
-      data={[
-        { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-        { name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
-      ]}        
+ 
+      data={data}      
       options={{
-        exportButton: true
+        exportButton: true,
+        pageSize:20,
+        pageSizeOptions:[20,100,500,1000],
+
       }}
     />
       </ThemeProvider>
