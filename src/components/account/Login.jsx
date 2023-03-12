@@ -1,7 +1,7 @@
 import React from 'react'
 import TextField from '@mui/material/TextField';
 import { Button, Grid } from '@mui/material';
-import '../App.css'
+import '../../App.css'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -19,7 +19,7 @@ const Login = () => {
     .then(response=>{
       console.log('Response',response)
     })
-    navigate('/entry')
+    navigate('/Hospitalbrucella')
     } catch (error) {
       console.log(`Error While Calling Login api ${error}`)
       

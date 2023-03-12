@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from './Navbar'
+import Navbar from '../Navbar'
 import MaterialTable from "material-table";
 import dayjs from 'dayjs';
 import { Button, createTheme, TextField, ThemeProvider } from '@mui/material'
@@ -7,7 +7,7 @@ import { DesktopDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-const Previousdetails = () => {
+const Projecdetails = () => {
     const defaultMaterialTheme = createTheme();
     const [data, setData] = useState([]);
     const [value, setValue] = React.useState(dayjs());
@@ -33,9 +33,9 @@ const Previousdetails = () => {
         <Navbar/>
         <div className='lab'>
 
-<Link to="/entry"> <p className='' > Micro Lab</p></Link> 
+<Link to="/Projectbrucella"> <p className='' > Project brucella</p></Link> 
       </div>
-        <h1 className='text-center mt-5 heading'>Previous Details</h1>
+        <h1 className='text-center my-5 heading'>Project Brucella Previous Details</h1>
         <div>
           <div className="container">
             <form action="">
@@ -62,7 +62,7 @@ const Previousdetails = () => {
     <TextField className="my-2 mx-2" sx={{width:200}}  variant="outlined" id="outlined-basic" label="Name"  required/>
     <TextField className="my-2 mx-2" sx={{width:200}}  variant="outlined" id="outlined-basic" label="Required Test"  required/>
     <TextField className="my-2 mx-2" sx={{width:200}}  variant="outlined" id="outlined-basic" label="Lab sectoin"  required/>
-    <Link to="#">  <center> <Button variant="contained" type='submit' className='my-2'  >Submit</Button></center> </Link>
+    <Link to="#">  <center> <Button variant="contained" type='submit' className='my-3'  >Submit</Button></center> </Link>
     </form>
   <center> <p className='my-2'><b>Total=</b></p></center>  
    </div>
@@ -98,4 +98,4 @@ const Previousdetails = () => {
   )
 }
 
-export default Previousdetails
+export default Projecdetails

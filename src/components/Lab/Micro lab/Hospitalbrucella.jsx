@@ -1,13 +1,13 @@
-import {  Button, Checkbox, Container,  Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, Grid, TextField } from '@mui/material'
-import { Box } from '@mui/system'
-import React, { Fragment, useEffect, useState } from 'react'
-import Navbar from './Navbar'
+import {  Button, Checkbox, Container,  Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, Grid, TextField } from '@mui/material';
+import { Box } from '@mui/system';
+import React, { Fragment, useEffect, useState } from 'react';
+import Navbar from '../../Navbar';
 import dayjs from 'dayjs';
 import moment from 'moment'
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import '../App.css'
+import '../../../App.css'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -17,7 +17,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { DataGrid } from '@mui/x-data-grid';
 
 import axios from 'axios';
-const Entry = () => {
+const Hospitalbrucella = () => {
     // const [value, setValue] = React.useState(dayjs());
 
     const [selectedDate,setSelectedDate] = React.useState(dayjs())
@@ -127,6 +127,7 @@ useEffect(()=>{
       
   return (
     <div>
+        {/* <Navbar/> */}
         <Navbar/>
         {/* This is Dialog box  */}
         <Container>
@@ -193,11 +194,11 @@ useEffect(()=>{
       
           <div className='previos'>
 
-    <Link to="/previous">   <p className='text-right' > previous details</p></Link> 
+    <Link to="/Brucelladetails">   <p className='text-right' > previous details</p></Link> 
           </div>
 
         </Container>
-        <h1 className='text-center my-3 mb-5 heading'>Entry Mode</h1>
+        <h1 className='text-center my-3 mb-5 heading'>Hospital Brucella</h1>
         
      <Box sx={{ flexGrow: 1 }}>
      
@@ -280,4 +281,4 @@ useEffect(()=>{
   )
 }
 
-export default Entry
+export default Hospitalbrucella

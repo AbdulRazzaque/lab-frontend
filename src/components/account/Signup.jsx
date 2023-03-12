@@ -1,7 +1,7 @@
 
 import TextField from '@mui/material/TextField';
-import { Button, Grid } from '@mui/material';
-import '../App.css'
+import { Button } from '@mui/material';
+import '../../App.css'
 
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -18,7 +18,7 @@ const Signup = () => {
     .then(response=>{
       console.log('Response',response)
     })
-    navigate('/entry')
+    navigate('/Hospitalbrucella')
     } catch (error) {
       console.log(`Error While Calling Signup api ${error}`)
       

@@ -2,3 +2,16 @@
 .heading{
   font-family: sans-serif;
 }
+.previos{
+  text-align: end;
+  font-size: x-large;
+  font-family: initial;
+  margin-top: 27px;
+}
+.lab{
+  text-align: end;
+  font-size: x-large;
+  margin-right: 25px;
+  font-family: initial;
+  margin-top: 27px;
+}
