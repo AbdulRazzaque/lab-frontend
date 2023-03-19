@@ -17,7 +17,7 @@ const Projecdetails = () => {
     const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZiMDY5ZjJjN2NkYzQwYWI3ZDQ3NDMiLCJpYXQiOjE2NzczOTU2MTUsImV4cCI6MTY3NzQ4MjAxNX0.oyFYN4ItsvjR8Gnspn9P2s3jLvqlkWXRPGDUukeQ_jE"
 
     const  alldata =()=>{
-      axios.get(`${process.env.REACT_APP_DEVELOPMENT}/api/item`,data,
+      axios.get(`${process.env.REACT_APP_DEVELOPMENT}/api/itemsProjectbrucella`,data,
      {headers:{token:`${accessToken}`}})
      .then(response=>{
        console.log('Response',response)

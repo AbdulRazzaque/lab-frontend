@@ -15,23 +15,23 @@ const Navbar = () => {
     {/* <Link to="/entry">   <li className="nav-item ">
           <a className="nav-link active" aria-current="page" href="#">Entry Mode</a>
         </li></Link> */}
-        <li class="nav-item dropdown ">
-          <a class="nav-link dropdown-toggle nav-link active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <li className="nav-item dropdown ">
+          <a className="nav-link dropdown-toggle nav-link active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Micro Lab
           </a>
-          <ul class="dropdown-menu">
-            <li><Link class="dropdown-item " to="/Hospitalbrucella">Hospital Brucella</Link></li>
-            <li><Link  class="dropdown-item" to="/Culture">culture</Link></li>
-            <li><Link class="dropdown-item" to="/Projectbrucella">Projcet Brucella</Link></li>
+          <ul className="dropdown-menu">
+            <li><Link className="dropdown-item " to="/Hospitalbrucella">Hospital Brucella</Link></li>
+            <li><Link  className="dropdown-item" to="/Culture">culture</Link></li>
+            <li><Link className="dropdown-item" to="/Projectbrucella">Projcet Brucella</Link></li>
           </ul>
         </li> 
-        <li class="nav-item dropdown ">
-          <a class="nav-link dropdown-toggle nav-link active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <li className="nav-item dropdown ">
+          <a className="nav-link dropdown-toggle nav-link active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           Genetic lab
           </a>
-          <ul class="dropdown-menu">
-            <li><Link class="dropdown-item " to="/Pcr">PCR </Link></li>
-            <li><Link class="dropdown-item" to="/Dna">DNA</Link></li>
+          <ul className="dropdown-menu">
+            <li><Link className="dropdown-item " to="/Pcr">PCR </Link></li>
+            <li><Link className="dropdown-item" to="/Dna">DNA</Link></li>
           </ul>
         </li> 
      
