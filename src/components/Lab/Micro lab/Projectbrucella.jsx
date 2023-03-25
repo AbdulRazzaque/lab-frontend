@@ -1,4 +1,4 @@
-import {  Button, Checkbox, Container,  Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, Grid, TextField } from '@mui/material';
+import {  Button, Checkbox, Container,  Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControlLabel, Grid, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { Fragment, useEffect, useState } from 'react';
 import Navbar from '../../Navbar';
@@ -22,13 +22,14 @@ import { DataGrid } from '@mui/x-data-grid';
 
 import axios from 'axios';
 
-const Projectbrucella = () => {
+const Projectbrucella = (props) => {
     // const [value, setValue] = React.useState(dayjs());
 
     const [selectedDate,setSelectedDate] = React.useState('')
     const [data, setData] = useState([]);
     const [update,setUpdate]=useState([])
     const [showDialog,setShowDialog]=useState(false)
+    const [alert,setAlert]=useState(false)
     const [value, setValue] = React.useState();
     const [value1, setValue1] = React.useState('');
     const [workOrderDate,setWorkOrderDate]=React.useState("")
@@ -44,7 +45,7 @@ const Projectbrucella = () => {
     const handleChangeee = (event) => {
        
       setValue1(event.target.value);
-    };
+    }; 
     // Form Submition Code Start Here 
     const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZiMDY5ZjJjN2NkYzQwYWI3ZDQ3NDMiLCJpYXQiOjE2NzczOTU2MTUsImV4cCI6MTY3NzQ4MjAxNX0.oyFYN4ItsvjR8Gnspn9P2s3jLvqlkWXRPGDUukeQ_jE"
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -115,7 +116,7 @@ const Projectbrucella = () => {
         renderCell:(params)=>(
           <Fragment>
            
-            <Button color='error'  onClick={ handleDeleteRow}  ><DeleteIcon/></Button>
+           <Button color='error' onClick={()=>deleteRow(params.row)}> <DeleteIcon/></Button>
           </Fragment>
         )
       }
@@ -184,28 +185,25 @@ try {
 
   
   
- 
-const handleDeleteRow = async(id ) =>{
-
-try {
- 
- 
-await  axios.delete(`${process.env.REACT_APP_DEVELOPMENT}/api/deleteProjectbrucella/${id._id}`,
-{headers:{token:`${accessToken}`}})
-.then(response=>{
-console.log('Response',response)
-
-})
-
-
-
-} catch (error) {
-console.log(error)
-} alldata()
+  const deleteRow = async(rowData)=>{
+  try {
+    {setAlert(true)}
+    await  axios.delete(`${process.env.REACT_APP_DEVELOPMENT}/api/deleteProjectbrucella/${rowData._id}`,update,
+    // await  axios.delete(`${process.env.REACT_APP_DEVELOPMENT}/api/deletelab/`,
+    {headers:{token:`${accessToken}`}})
+    .then(response=>{
+      console.log('Response',response)
+     alldata()
+    })
+  }
+  catch (error) {
+    console.log(error)
+    
+  }
 
 
-
-}
+    console.log("Hello and welcome")
+  }
 
   
   
@@ -223,8 +221,26 @@ useEffect(()=>{
     <div>
         {/* <Navbar/> */}
         <Navbar/>
-        {/* This is Dialog box  */}
+
+        {/* This is Dialog box For update */}
         <Container>
+
+          {
+            alert && 
+            <Dialog open={alert} style={{height:600}}>
+              <DialogTitle>Delete Row</DialogTitle>
+              <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+            Are You sure You want to delete this.
+          </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+      <Button variant='contained' onClick={deleteRow}>Yes</Button>
+      <Button variant='outlined' color='error'
+       onClick={()=>{setAlert(false)}}>Cancel</Button>
+    </DialogActions>
+            </Dialog>
+          }
           { update &&
     <Dialog open={showDialog} style={{height:600}}>
     <DialogTitle>Update Data</DialogTitle>
@@ -245,7 +261,7 @@ useEffect(()=>{
                   label="Date"
                   inputFormat="dd/MM/yyyy"
                   value={  update.selectedDate } onChange={updateData}
-                     
+                 
                   renderInput={(params) => <TextField fullWidth {...params} />}/>
          </LocalizationProvider>
   
@@ -289,7 +305,7 @@ useEffect(()=>{
          <FormControlLabel control={<Checkbox  />} label="All Parasite" /> */}
          {/* <FormControlLabel control={<Checkbox  />} label="All Parasite" /> */}
          
-        <TextField  value={  update.RequiredAnalysis } onChange={updateData}  className="my-2" sx={{ width: 500 }} variant="outlined" id="outlined-basic" label="option" placeholder='Enter other option'  />
+        <TextField  value={  update.requiredTest } onChange={updateData}  className="my-2" sx={{ width: 500 }} variant="outlined" id="outlined-basic" label="option" placeholder='Enter other option'  />
   </Grid>
 
 </Grid>
@@ -314,8 +330,6 @@ useEffect(()=>{
      <Box sx={{ flexGrow:1}}>
      
      <form onSubmit={handleSubmit(onSubmit)}>
-
-
       <Grid container spacing={1} columns={30} 
       alignItems="center"
         justifyContent="center"
@@ -347,7 +361,7 @@ useEffect(()=>{
 <b> Sample Type  : </b> 
         <FormControl>
         
-      <FormGroup
+<FormGroup row
         aria-labelledby="demo-controlled-radio-buttons-group"
         name="controlled-radio-buttons-group"
         value={value}
@@ -358,20 +372,21 @@ useEffect(()=>{
          <FormControlLabel  value="Fecal" control={<Checkbox  />} label="Fecal" />
          <FormControlLabel  value="Swab"  control={<Checkbox  />} label="Swab" />
          <FormControlLabel  value="Urine" control={<Checkbox  />} label="Urine" />
-        <TextField   value={value} className="my-2" sx={{ width: 500 }} variant="outlined" id="outlined-basic" label="option" placeholder='Enter other option'  />
+        <TextField   value={value} className="my-2" sx={{ width: 500 }} variant="outlined" id="outlined-basic"  placeholder='Enter other option'  />
 
        
-      </FormGroup>
+      </FormGroup> 
     </FormControl>
 
          <br />
 <b> Required Analysis  : </b><FormControl>
         
-      <FormGroup
+      <FormGroup row
         aria-labelledby="demo-controlled-radio-buttons-group"
         name="controlled-radio-buttons-group"
         value={value1}
         onChange={handleChangeee}
+        
       >
 
           <FormControlLabel  value="Bio"  control={<Checkbox />} label="Bio" />
