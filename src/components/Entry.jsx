@@ -186,7 +186,7 @@ useEffect(()=>{
     <DialogActions>
       <Button variant='contained' onClick={updateRow}>Update</Button>
       <Button variant='outlined' color='error'
-       onClick={()=>{setShowDialog(false)}}>Delete</Button>
+       onClick={()=>{setShowDialog(false)}}>Cancel</Button>
     </DialogActions>
     </Dialog>
           }

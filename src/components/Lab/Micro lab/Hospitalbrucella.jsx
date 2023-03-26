@@ -13,7 +13,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Link, useNavigate } from 'react-router-dom'
 import { DataGridPro,useGridApiRef } from '@mui/x-data-grid-pro';
 import { useForm } from 'react-hook-form';
-
+ 
 import EditIcon from '@mui/icons-material/Edit';
 import { DataGrid } from '@mui/x-data-grid';
 
@@ -87,16 +87,14 @@ const Hospitalbrucella = (props) => {
         
 
  
+ 
         if(response){
           setWorkOrderDate(date.format(new Date(), 'YY-MM'))
           setMainDate(date.format(new Date(), 'DD-MM-YY'))
-            
-          response.data.map((item)=>{
-            setCount(item.count +1)
-            setOrderBatch(`B${item.count}` )
-          })
-          
-        }
+          setCount( parseInt(response.data[0].count)+1    )
+          setOrderBatch(`B${response.data[0].count}`)
+ }
+
         
         setData(response.data)
         
@@ -295,7 +293,7 @@ useEffect(()=>{
     <DialogActions>
       <Button variant='contained' onClick={updateRow}>Update</Button>
       <Button variant='outlined' color='error'
-       onClick={()=>{setShowDialog(false)}}>Delete</Button>
+       onClick={()=>{setShowDialog(false)}}>Cancel</Button>
     </DialogActions>
     </Dialog>
           }

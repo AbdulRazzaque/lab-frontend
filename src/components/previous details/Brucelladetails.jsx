@@ -100,19 +100,19 @@ console.log(data.pre,'data')
     <TextField className=" mx-2" sx={{width:200}} {...register("sampleType", { required: true, maxLength: 20 })} variant="outlined" id="outlined-basic" label="sampleType"  required/>
     {/* <TextField className="my-2 mx-2" sx={{width:200}}  variant="outlined" id="outlined-basic" label="Lab sectoin"  required/> */}
      <center> <Button variant="contained" type='submit' className='my-3'  >Submit</Button></center> 
+     {/* <center> <Button variant="contained" type='submit' className='' onClick={} >Cleare</Button></center>  */}
     </form>
-  <center> <p className='my-2'><b>Total=</b></p></center>  
+  {/* <center> <p className='my-2'><b>Total=</b></p></center>   */}
    </div>
         <ThemeProvider theme={defaultMaterialTheme}>
         <MaterialTable
-      title="Details"
+      title="Hospital Brucella Previous Details"
       columns={[
         { title: 'Name', field: 'name' },
         { title: 'work-order', field: 'workOder' },
-        { title: 'Sample', field: 'noofSample'},
-        { title: 'Test', field: 'RequiredAnalysis'},
-        { title: 'Type', field: 'sampleType'},
-      { title: 'lab', field: 'lab'},
+        { title: 'Sample NO', field: 'noofSample'},
+        { title: 'Sample Type', field: 'sampleType'},
+        { title: 'Required Analysis', field: 'RequiredAnalysis'},
       { title: 'Date', field: 'date',
       type: 'date',
       dateSetting: {
