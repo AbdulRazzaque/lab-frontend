@@ -12,7 +12,7 @@ const Signup = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
   const onSubmit= async(data)=>{
-    try {
+    try { 
        await axios.post(`${process.env.REACT_APP_DEVELOPMENT}/api/register`,data,
     {headers:{token:`${accessToken}`}})
     .then(response=>{

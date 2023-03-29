@@ -3,8 +3,8 @@ import { Box } from '@mui/system';
 import React, { Fragment, useEffect, useState } from 'react';
 import Navbar from '../../Navbar';
 import dayjs from 'dayjs';
-import date from 'date-and-time';
-import moment from 'moment' 
+import date from 'date-and-time'; 
+import moment from 'moment'  
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -20,7 +20,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
 import { DatePicker } from '@mui/x-date-pickers';
 const Hospitalbrucella = (props) => {
-    // const [value, setValue] = React.useState(dayjs());
+
    
     const [selectedDate,setSelectedDate] = React.useState(dayjs())
     const [updatedate,setupdatedate] = React.useState(dayjs())
@@ -43,15 +43,13 @@ const Hospitalbrucella = (props) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
 
-// console.log(selectedDate)
-  // console.log(data)
   const [columns, setColumns] = useState([
        
     { title: 'work-order', field: 'workOder',  width:150,  },
     { title: 'Name', field: 'name',  width:150, },
     { title: 'Sample', field: 'noofSample',  width:100,},
     { title: 'Date', field: 'date', width:200,renderCell:(param)=>moment.parseZone(param.value).local().format("DD/MM/YY")
-  // valueGetter:(param)=>moment.parseZone(param.value).local().format("DD/MM/YY"),width:200,
+
   },
     { title: 'Type', field: 'sampleType',  width:200},
     { title: 'Test', field: 'RequiredAnalysis',  width:200,},
@@ -123,7 +121,7 @@ const Hospitalbrucella = (props) => {
     .then(response=>{
       console.log('Response',response)
     })
-    // navigate('/entry')
+
     setData(data)
     } catch (error) {
       console.log(`Error While Calling add api ${error}`)
@@ -132,13 +130,6 @@ const Hospitalbrucella = (props) => {
     }
     alldata()
   }
-
- 
-    // const handleChange = (event) => {
-    
-    //   setSelectedDate(event.target.value);
-    //   updateData()
-    // };
 
       const updateData=(e)=>{
           setUpdate({...update,[e.target.name]:e.target.value})
@@ -164,7 +155,7 @@ try {
     apiRef.current.updateRows([update])
   })
 
-  setData([update]);
+
   setShowDialog(false)
 } catch (error) {
   console.log(error)

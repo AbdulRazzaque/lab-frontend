@@ -164,7 +164,7 @@ try {
     apiRef.current.updateRows([update])
   })
 
-  setData([update]);
+
   setShowDialog(false)
 } catch (error) {
   console.log(error)

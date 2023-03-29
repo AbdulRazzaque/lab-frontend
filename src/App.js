@@ -1,6 +1,6 @@
 import {Routes, Route,} from 'react-router-dom';
 import Addlab from './components/Addlab';
-import Entry from './components/Entry';
+
 import Dna from './components/Lab/genetic lab/Dna';
 import Pcr from './components/Lab/genetic lab/Pcr';
 import Culture from './components/Lab/Micro lab/Culture';
@@ -13,7 +13,6 @@ import Culturedetails from './components/previous details/Culturedetails';
 import Dnadetails from './components/previous details/Dnadetails';
 import Pcrdetails from './components/previous details/Pcrdetails';
 import Projecdetails from './components/previous details/Projecdetails';
-import Previousdetails from './components/Previousdetails';
 import Signup from './components/account/Signup';
 function App() {
   return (
@@ -29,7 +28,6 @@ function App() {
         <Route path="Projectbrucella" element={<Projectbrucella />} />
         <Route path="Pcr" element={<Pcr />} />
         <Route path="Dna" element={<Dna />} />
-        <Route path="entry" element={<Entry />} />
         {/* This is Previous Details section  */}
         <Route path="Brucelladetails" element={<Brucelladetails />} />
         <Route path="Culturedetails" element={<Culturedetails />} />
@@ -37,9 +35,6 @@ function App() {
         <Route path="Pcrdetails" element={<Pcrdetails />} />
         <Route path="Projecdetails" element={<Projecdetails />} />
 
-
-
-        <Route path="previous" element={<Previousdetails />} />
         <Route path="addlab" element={<Addlab />} /> 
       </Routes>
     </div>

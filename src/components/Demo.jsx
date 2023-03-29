@@ -10,12 +10,13 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import date from 'date-and-time';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-const Projecdetails = () => {
+const Dnadetails = () => {
     const defaultMaterialTheme = createTheme();
     const [data, setData] = useState([]);
-    const [value, setValue] = React.useState(dayjs());
-    const [value1, setValue1] = React.useState(); 
-    const { register, handleSubmit } = useForm();
+    const [value, setValue] = React.useState(null);
+    const [value1, setValue1] = React.useState(null); 
+    const [flag,setFlag] = React.useState(false)
+    const { register, handleSubmit,reset, } = useForm();
     const handleChange = (newValue) => {
       setValue(newValue);
     };
@@ -25,10 +26,10 @@ const Projecdetails = () => {
     const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZiMDY5ZjJjN2NkYzQwYWI3ZDQ3NDMiLCJpYXQiOjE2NzczOTU2MTUsImV4cCI6MTY3NzQ4MjAxNX0.oyFYN4ItsvjR8Gnspn9P2s3jLvqlkWXRPGDUukeQ_jE"
 
     const  alldata =()=>{
-      axios.get(`${process.env.REACT_APP_DEVELOPMENT}/api/itemsProjectbrucella`,data,
+      axios.get(`${process.env.REACT_APP_DEVELOPMENT}/api/itemsDna`,data,
      {headers:{token:`${accessToken}`}})
      .then(response=>{
-       console.log('Response',response)
+       
        setData(response.data)
      })
   }
@@ -36,13 +37,11 @@ const Projecdetails = () => {
     let obj={
      value,
      value1,
-     ...stock
+     ...stock}
 
-    }
+   
 
-   console.log(obj);
-
-   axios.post(`${process.env.REACT_APP_DEVELOPMENT}/api/getPrevProjectbrucella`,{from:date.format(value,'YYYY/MM/DD'),to:date.format(value1,'YYYY/MM/DD'), ...obj},)
+   axios.post(`${process.env.REACT_APP_DEVELOPMENT}/api/getPrevStockDna`,{from:date.format(value,'YYYY/MM/DD'),to:date.format(value1,'YYYY/MM/DD'), ...obj},)
       .then(response=>{
        
         setData(response.data.pre,'response.data')
@@ -50,19 +49,19 @@ const Projecdetails = () => {
 
       })
  } 
+ console.log(data.pre,'data')
 
-console.log(data.pre,'data')
   useEffect(()=>{
   alldata()
-},[])
+},[flag])
   return (
     <div>
         <Navbar/>
         <div className='lab'>
 
-        <Link to="/Projectbrucella"> <p className='' > Project brucella</p></Link> 
+        <Link to="/Dna"> <p className='' > DNA</p></Link> 
       </div>
-      <h1 className='text-center my-5 heading'>Project Brucella Previous Details</h1>
+      <h1 className='text-center my-5 heading'>DNA Previous Details</h1>
         <div>
           <div className="container">
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -86,7 +85,7 @@ console.log(data.pre,'data')
         
         dateAdapter={AdapterDateFns} >
         <DesktopDatePicker
-        label="Start Date"
+        label="End Date"
         inputFormat="dd/MM/yyyy"
         value={value1}
         onChange={(newValue) => {
@@ -100,13 +99,27 @@ console.log(data.pre,'data')
     <TextField className=" mx-2" sx={{width:200}} {...register("sampleType", { required: true, maxLength: 20 })} variant="outlined" id="outlined-basic" label="sampleType"  required/>
     {/* <TextField className="my-2 mx-2" sx={{width:200}}  variant="outlined" id="outlined-basic" label="Lab sectoin"  required/> */}
      <center> <Button variant="contained" type='submit' className='my-3'  >Submit</Button></center> 
-     {/* <center> <Button variant="contained" type='submit' className='' onClick={} >Cleare</Button></center>  */}
+     <center> <Button variant="contained"  className='' onClick={()=>{
+    setData([])
+   setFlag(!flag)
+   setValue(null)
+   setValue1(null)
+   reset({
+    name: "",
+    sampleType: "",
+  })
+     }} 
+     
+     
+     >Cleare
+     </Button>
+     </center>  
     </form>
   {/* <center> <p className='my-2'><b>Total=</b></p></center>   */}
    </div>
         <ThemeProvider theme={defaultMaterialTheme}>
         <MaterialTable
-      title="Project Brucella Previous Details"
+      title="DNA Previous Details"
       columns={[
         { title: 'Name', field: 'name' },
         { title: 'work-order', field: 'workOder' },
@@ -135,4 +148,4 @@ console.log(data.pre,'data')
   )
 }
 
-export default Projecdetails
+export default Dnadetails

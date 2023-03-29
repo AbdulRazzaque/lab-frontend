@@ -1,27 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar'
 import MaterialTable from "material-table";
-import dayjs from 'dayjs';
 import { Button, createTheme, TextField, ThemeProvider } from '@mui/material'
 import { DesktopDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import axios from 'axios'; 
 import { useForm } from 'react-hook-form';
 import date from 'date-and-time';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 const Culturedetails = () => {
     const defaultMaterialTheme = createTheme();
     const [data, setData] = useState([]);
-    const [value, setValue] = React.useState(dayjs());
-    const [value1, setValue1] = React.useState(); 
-    const { register, handleSubmit } = useForm();
-    const handleChange = (newValue) => {
-      setValue(newValue);
-    };
-    const handleChangee = (newValue1) => {
-      setValue1(newValue1);
-    };    
+    const [value, setValue] = React.useState(null);
+    const [value1, setValue1] = React.useState(null); 
+    const [flag,setFlag] = React.useState(false)
+    const { register, handleSubmit,reset, } = useForm();
+ 
     const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZiMDY5ZjJjN2NkYzQwYWI3ZDQ3NDMiLCJpYXQiOjE2NzczOTU2MTUsImV4cCI6MTY3NzQ4MjAxNX0.oyFYN4ItsvjR8Gnspn9P2s3jLvqlkWXRPGDUukeQ_jE"
 
     const  alldata =()=>{
@@ -50,11 +44,11 @@ const Culturedetails = () => {
 
       })
  } 
-
 console.log(data.pre,'data')
+
   useEffect(()=>{
   alldata()
-},[])
+},[flag])
   return (
     <div>
         <Navbar/>
@@ -86,7 +80,7 @@ console.log(data.pre,'data')
         
         dateAdapter={AdapterDateFns} >
         <DesktopDatePicker
-        label="Start Date"
+        label="End Date"
         inputFormat="dd/MM/yyyy"
         value={value1}
         onChange={(newValue) => {
@@ -100,7 +94,21 @@ console.log(data.pre,'data')
     <TextField className=" mx-2" sx={{width:200}} {...register("sampleType", { required: true, maxLength: 20 })} variant="outlined" id="outlined-basic" label="sampleType"  required/>
     {/* <TextField className="my-2 mx-2" sx={{width:200}}  variant="outlined" id="outlined-basic" label="Lab sectoin"  required/> */}
      <center> <Button variant="contained" type='submit' className='my-3'  >Submit</Button></center> 
-     {/* <center> <Button variant="contained" type='submit' className='' onClick={} >Cleare</Button></center>  */}
+     <center> <Button variant="contained"  className='' onClick={()=>{
+    setData([])
+   setFlag(!flag)
+   setValue(null)
+   setValue1(null)
+   reset({
+    name: "",
+    sampleType: "",
+  })
+     }} 
+     
+     
+     >Cleare
+     </Button>
+     </center>  
     </form>
   {/* <center> <p className='my-2'><b>Total=</b></p></center>   */}
    </div>

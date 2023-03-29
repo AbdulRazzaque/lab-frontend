@@ -5,7 +5,7 @@ import Navbar from '../../Navbar';
 import dayjs from 'dayjs';
 import date from 'date-and-time';
 import moment from 'moment' 
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import '../../../App.css'
@@ -20,7 +20,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
 import { DatePicker } from '@mui/x-date-pickers';
 const Dna = (props) => {
-    // const [value, setValue] = React.useState(dayjs());
+    
    
     const [selectedDate,setSelectedDate] = React.useState(dayjs())
     const [updatedate,setupdatedate] = React.useState(dayjs())
@@ -41,7 +41,7 @@ const Dna = (props) => {
     // Form Submition Code Start Here 
     const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZiMDY5ZjJjN2NkYzQwYWI3ZDQ3NDMiLCJpYXQiOjE2NzczOTU2MTUsImV4cCI6MTY3NzQ4MjAxNX0.oyFYN4ItsvjR8Gnspn9P2s3jLvqlkWXRPGDUukeQ_jE"
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const navigate = useNavigate();
+
 
 // console.log(selectedDate)
   // console.log(data)
@@ -164,7 +164,7 @@ try {
     apiRef.current.updateRows([update])
   })
 
-  setData([update]);
+
   setShowDialog(false)
 } catch (error) {
   console.log(error)
