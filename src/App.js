@@ -1,5 +1,5 @@
 import {Routes, Route,} from 'react-router-dom';
-import Addlab from './components/Addlab';
+
 
 import Dna from './components/Lab/genetic lab/Dna';
 import Pcr from './components/Lab/genetic lab/Pcr';
@@ -14,6 +14,15 @@ import Dnadetails from './components/previous details/Dnadetails';
 import Pcrdetails from './components/previous details/Pcrdetails';
 import Projecdetails from './components/previous details/Projecdetails';
 import Signup from './components/account/Signup';
+import Mainlab from './components/Lab/other lab/Mainlab';
+import Hplclab from './components/Lab/other lab/Hplclab';
+import Allparasites from './components/Lab/other lab/Allparasites';
+import Maindetails from './components/previous details/Maindetails';
+import Allparasitesdetails from './components/previous details/Allparasitesdetails';
+import Hplcdetails from './components/previous details/Hplcdetails';
+
+
+
 function App() {
   return (
     <div className="App">
@@ -28,14 +37,23 @@ function App() {
         <Route path="Projectbrucella" element={<Projectbrucella />} />
         <Route path="Pcr" element={<Pcr />} />
         <Route path="Dna" element={<Dna />} />
+        <Route path="Mainlab" element={<Mainlab />} />
+        <Route path="Hplclab" element={<Hplclab />} />
+        <Route path="Allparasites" element={<Allparasites />} />
         {/* This is Previous Details section  */}
         <Route path="Brucelladetails" element={<Brucelladetails />} />
         <Route path="Culturedetails" element={<Culturedetails />} />
         <Route path="Dnadetails" element={<Dnadetails />} />
         <Route path="Pcrdetails" element={<Pcrdetails />} />
         <Route path="Projecdetails" element={<Projecdetails />} />
+        <Route path="Maindetails" element={<Maindetails />} />
+        <Route path="Hplcdetails" element={<Hplcdetails/>} />
+        <Route path="Allparasitesdetails" element={<Allparasitesdetails />} />
+       
 
-        <Route path="addlab" element={<Addlab />} /> 
+      
+       
+
       </Routes>
     </div>
   );
