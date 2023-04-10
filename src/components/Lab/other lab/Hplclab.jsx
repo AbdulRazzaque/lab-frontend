@@ -33,7 +33,7 @@ const Hplclab = (props) => {
     const [value1, setValue1] = React.useState('');
     const [workOrderDate,setWorkOrderDate]=React.useState("")
     const [mainDate,setMainDate]=React.useState("")
-    const [orderBatch,setOrderBatch]=React.useState("B")
+    const [orderBatch,setOrderBatch]=React.useState("H")
     const [count, setCount] = useState(1)
 
 
@@ -90,7 +90,7 @@ const Hplclab = (props) => {
           setWorkOrderDate(date.format(new Date(), 'YY-MM'))
           setMainDate(date.format(new Date(), 'DD-MM-YY'))
           setCount( parseInt(response.data[0].count)+1    )
-          setOrderBatch(`B${response.data[0].count}`)
+          setOrderBatch(`H${response.data[0].count}`)
  }
 
         
@@ -358,7 +358,6 @@ useEffect(()=>{
           onChange={AnalysisTypechange}
           
         >
-  
             <FormControlLabel  value="Bio"  control={<Checkbox />} label="Bio" />
            <FormControlLabel  value="Brucella"  control={<Checkbox  />} label="Brucella" />
            <FormControlLabel  value="All Vitamins"   control={<Checkbox  />} label="All Vitamins" />
@@ -366,10 +365,10 @@ useEffect(()=>{
            <FormControlLabel  value="Hemo"   control={<Checkbox  />} label="Hemo" />
            <FormControlLabel  value="Elisa"  control={<Checkbox  />} label="Elisa" />
            <FormControlLabel  value="Vitamin B1"  control={<Checkbox  />} label="Vitamin B1" />
-           <FormControlLabel  value="Progeseron"  control={<Checkbox  />} label="Progeseron" />
+           <FormControlLabel  value="Progesteron"  control={<Checkbox  />} label="Progesteron" />
            <FormControlLabel  value="Culture"  control={<Checkbox  />} label="Culture" />
-           <FormControlLabel  value="Testeerone"  control={<Checkbox  />} label="Testeerone" />
-           <FormControlLabel  value="All Parasite"  control={<Checkbox  />} label="All Parasite" />
+           <FormControlLabel  value="Testesterone"  control={<Checkbox  />} label="Testesterone" />
+           <FormControlLabel  value="DNA"  control={<Checkbox  />} label="DNA" />
         
           <TextField   value={value1} className="my-2" sx={{ width: 500 }} variant="outlined" id="outlined-basic"  placeholder='Enter other option'  />
           </FormGroup>

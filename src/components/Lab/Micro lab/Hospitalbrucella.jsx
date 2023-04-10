@@ -359,17 +359,17 @@ useEffect(()=>{
           
         >
   
-            <FormControlLabel  value="Bio"  control={<Checkbox />} label="Bio" />
+  <FormControlLabel  value="Bio"  control={<Checkbox />} label="Bio" />
            <FormControlLabel  value="Brucella"  control={<Checkbox  />} label="Brucella" />
            <FormControlLabel  value="All Vitamins"   control={<Checkbox  />} label="All Vitamins" />
            <FormControlLabel  value="All Parasite"  control={<Checkbox  />} label="All Parasite" />
            <FormControlLabel  value="Hemo"   control={<Checkbox  />} label="Hemo" />
            <FormControlLabel  value="Elisa"  control={<Checkbox  />} label="Elisa" />
            <FormControlLabel  value="Vitamin B1"  control={<Checkbox  />} label="Vitamin B1" />
-           <FormControlLabel  value="Progeseron"  control={<Checkbox  />} label="Progeseron" />
+           <FormControlLabel  value="Progesteron"  control={<Checkbox  />} label="Progesteron" />
            <FormControlLabel  value="Culture"  control={<Checkbox  />} label="Culture" />
-           <FormControlLabel  value="Testeerone"  control={<Checkbox  />} label="Testeerone" />
-           <FormControlLabel  value="All Parasite"  control={<Checkbox  />} label="All Parasite" />
+           <FormControlLabel  value="Testesterone"  control={<Checkbox  />} label="Testesterone" />
+           <FormControlLabel  value="DNA"  control={<Checkbox  />} label="DNA" />
         
           <TextField   value={value1} className="my-2" sx={{ width: 500 }} variant="outlined" id="outlined-basic"  placeholder='Enter other option'  />
           </FormGroup>
