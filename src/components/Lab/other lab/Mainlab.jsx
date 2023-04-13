@@ -79,7 +79,7 @@ const Mainlab = (props) => {
        // Here I am Calling All DATA 
        const  alldata =()=>{
   
-        axios.get(`${process.env.REACT_APP_DEVELOPMENT}/api/item`,
+        axios.get(`${process.env.REACT_APP_DEVELOPMENT}/api/itemsMain`,
        {headers:{token:`${accessToken}`}})
        .then(response=>{
         
@@ -116,7 +116,7 @@ const Mainlab = (props) => {
     }
     console.log(obj,'obj')
     try {
-       await axios.post(`${process.env.REACT_APP_DEVELOPMENT}/api/add`,obj,
+       await axios.post(`${process.env.REACT_APP_DEVELOPMENT}/api/addMain`,obj,
     {headers:{token:`${accessToken}`}})
     .then(response=>{
       console.log('Response',response)
@@ -148,7 +148,7 @@ const Mainlab = (props) => {
 try {
        
         console.log(update)
-  await  axios.put(`${process.env.REACT_APP_DEVELOPMENT}/api/update/${update._id}`,combinedObj,
+  await  axios.put(`${process.env.REACT_APP_DEVELOPMENT}/api/updateMain/${update._id}`,combinedObj,
   {headers:{token:`${accessToken}`}})
   .then(response=>{
     console.log('Response',response)
@@ -170,7 +170,7 @@ try {
    
         try {
    
-          await  axios.delete(`${process.env.REACT_APP_DEVELOPMENT}/api/delete/${update._id}`,update,
+          await  axios.delete(`${process.env.REACT_APP_DEVELOPMENT}/api/deleteMain/${update._id}`,update,
           // await  axios.delete(`${process.env.REACT_APP_DEVELOPMENT}/api/deletelab/`,
           {headers:{token:`${accessToken}`}})
           .then(response=>{

@@ -80,7 +80,7 @@ const Allparasites = (props) => {
        // Here I am Calling All DATA 
        const  alldata =()=>{
   
-        axios.get(`${process.env.REACT_APP_DEVELOPMENT}/api/item`,
+        axios.get(`${process.env.REACT_APP_DEVELOPMENT}/api/itemsParasites`,
        {headers:{token:`${accessToken}`}})
        .then(response=>{
         
@@ -117,7 +117,7 @@ const Allparasites = (props) => {
     }
     console.log(obj,'obj')
     try {
-       await axios.post(`${process.env.REACT_APP_DEVELOPMENT}/api/add`,obj,
+       await axios.post(`${process.env.REACT_APP_DEVELOPMENT}/api/addParasites`,obj,
     {headers:{token:`${accessToken}`}})
     .then(response=>{
       console.log('Response',response)
@@ -149,7 +149,7 @@ const Allparasites = (props) => {
 try {
        
         console.log(update)
-  await  axios.put(`${process.env.REACT_APP_DEVELOPMENT}/api/update/${update._id}`,combinedObj,
+  await  axios.put(`${process.env.REACT_APP_DEVELOPMENT}/api/updateParasites/${update._id}`,combinedObj,
   {headers:{token:`${accessToken}`}})
   .then(response=>{
     console.log('Response',response)
@@ -171,7 +171,7 @@ try {
    
         try {
    
-          await  axios.delete(`${process.env.REACT_APP_DEVELOPMENT}/api/delete/${update._id}`,update,
+          await  axios.delete(`${process.env.REACT_APP_DEVELOPMENT}/api/deleteParasites/${update._id}`,update,
           // await  axios.delete(`${process.env.REACT_APP_DEVELOPMENT}/api/deletelab/`,
           {headers:{token:`${accessToken}`}})
           .then(response=>{
