@@ -12,17 +12,17 @@ const Navbar = () => {
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item ">
-          <Link to ="/Mainlab" class="nav-link active" >Main Lab</Link>
+          <li className="nav-item ">
+          <Link to ="/Mainlab" className="nav-link active" >Main Lab</Link>
         </li>
-          <li class="nav-item ">
+          <li className="nav-item ">
 
-          <Link to ="/Hplclab" class="nav-link active" >HPLC Lab</Link>
+          <Link to ="/Hplclab" className="nav-link active" >HPLC Lab</Link>
 
         </li>
-          <li class="nav-item ">
+          <li className="nav-item ">
 
-          <Link to ="/Allparasites" class="nav-link active" >Parasites Lab</Link>
+          <Link to ="/Allparasites" className="nav-link active" >Parasites Lab</Link>
         </li>
  
         <li className="nav-item dropdown ">

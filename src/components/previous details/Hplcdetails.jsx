@@ -18,8 +18,8 @@ const Hplcdetails = () => {
   
     const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZiMDY5ZjJjN2NkYzQwYWI3ZDQ3NDMiLCJpYXQiOjE2NzczOTU2MTUsImV4cCI6MTY3NzQ4MjAxNX0.oyFYN4ItsvjR8Gnspn9P2s3jLvqlkWXRPGDUukeQ_jE"
 
-    const  alldata =()=>{
-      axios.get(`${process.env.REACT_APP_DEVELOPMENT}/api/itemsPrc`,data,
+    const  alldata =()=>{ 
+      axios.get(`${process.env.REACT_APP_DEVELOPMENT}/api/itemsHPLC`,data,
      {headers:{token:`${accessToken}`}})
      .then(response=>{
        console.log('Response',response)
@@ -36,7 +36,7 @@ const Hplcdetails = () => {
 
    console.log(obj);
 
-   axios.post(`${process.env.REACT_APP_DEVELOPMENT}/api/getPrevProjectPcr`,{from:date.format(value,'YYYY/MM/DD'),to:date.format(value1,'YYYY/MM/DD'), ...obj},)
+   axios.post(`${process.env.REACT_APP_DEVELOPMENT}/api/getPrevStockHPLC`,{from:date.format(value,'YYYY/MM/DD'),to:date.format(value1,'YYYY/MM/DD'), ...obj},)
       .then(response=>{
        
         setData(response.data.pre,'response.data')
