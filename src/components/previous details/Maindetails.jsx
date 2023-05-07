@@ -54,7 +54,7 @@ console.log(data.pre,'data')
         <Navbar/>
         <div className='lab'>
 
-        <Link to="/Mainlab"> <p className='' > Main Lab</p></Link>  
+        <Link to="/Mainlab"> <p className=''> Main Lab</p></Link>  
       </div>
       <h1 className='text-center my-5 heading'>Main Lab Previous Details</h1>
         <div>

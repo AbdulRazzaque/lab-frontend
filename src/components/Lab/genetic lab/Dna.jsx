@@ -1,11 +1,11 @@
 import {  Alert, Button, Checkbox, Container,  Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControl, FormControlLabel, FormGroup, Grid, TextField } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from "react";
 import Navbar from '../../Navbar';
 import dayjs from 'dayjs';
-import date from 'date-and-time';
-import moment from 'moment' 
-
+import date from 'date-and-time'; 
+import moment from 'moment'   
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import '../../../App.css'
@@ -19,6 +19,9 @@ import { DataGrid } from '@mui/x-data-grid';
 
 import axios from 'axios';
 import { DatePicker } from '@mui/x-date-pickers';
+import readXlsxFile from "read-excel-file";
+import UploadFileIcon from "@mui/icons-material/UploadFile";
+import { styled } from "@mui/material/styles";
 const Dna = (props) => {
     
    
@@ -51,7 +54,7 @@ const Dna = (props) => {
     { title: 'Name', field: 'name',  width:150, },
     { title: 'Sample', field: 'noofSample',  width:100,},
     { title: 'Date', field: 'date', width:200,renderCell:(param)=>moment.parseZone(param.value).local().format("DD/MM/YY")
-  // valueGetter:(param)=>moment.parseZone(param.value).local().format("DD/MM/YY"),width:200,
+
   },
     { title: 'Type', field: 'sampleType',  width:200},
     { title: 'Test', field: 'RequiredAnalysis',  width:200,},
@@ -123,7 +126,7 @@ const Dna = (props) => {
     .then(response=>{
       console.log('Response',response)
     })
-    // navigate('/entry')
+
     setData(data)
     } catch (error) {
       console.log(`Error While Calling add api ${error}`)
@@ -132,13 +135,6 @@ const Dna = (props) => {
     }
     alldata()
   }
-
- 
-    // const handleChange = (event) => {
-    
-    //   setSelectedDate(event.target.value);
-    //   updateData()
-    // };
 
       const updateData=(e)=>{
           setUpdate({...update,[e.target.name]:e.target.value})
@@ -209,14 +205,61 @@ try {
    
   };
   
+  const upload = (e) => {
+    try {
+      console.log("inside upload");
+      console.log(e.target.files[0]);
+      let array = [];
+      readXlsxFile(e.target.files[0]).then((rows) => {
+        // console.log(rows)
+        // setData(rows)
+
+        rows.map((item, id) => {
+          if (id !== 0) {
+            // array.push({
+            //   sampleType: item[5],
+            //   RequiredAnalysis: item[4],
+            //   noofSample: item[3],
+            //   date: item[1],
+            //   name: item[1],
+            //   workOder: item[2],
+            // });
+
+            let obj = {
+              sampleType: item[5],
+              RequiredAnalysis: item[4],
+              noofSample: item[3],
+              date: item[0],
+              name: item[1],
+              workOder: item[2],
+            };
+
+            axios
+              .post(`${process.env.REACT_APP_DEVELOPMENT}/api/addDna`, obj, {
+                headers: { token: `${accessToken}` },
+              })
+              .then((response) => {
+                console.log("Response", response);
+                setData(response.data);
+                alldata();
+              });
+              setData(data);
+            }
+        });
+
+        console.log(array);
+        e.target.value = "";
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+ 
+  const Input = styled("input")({
+    display: "none",
+  });
 useEffect(()=>{
   alldata()
-
-
-
- 
-    
-
 },[])
 
   return (
@@ -260,7 +303,7 @@ useEffect(()=>{
   <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
       
-        label="Basic example"
+        label="Date"
         value={updatedate}
         onChange={(newValue) => {
           setupdatedate(newValue);
@@ -323,7 +366,7 @@ useEffect(()=>{
         <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
       
-        label="Basic example"
+        label="Date"
         value={selectedDate}
         onChange={(newValue) => {
           setSelectedDate(newValue);
@@ -388,7 +431,25 @@ useEffect(()=>{
       </Grid> 
  
         <center> <Button variant="contained" type='submit' className='my-4'  >Submit</Button></center>
-      
+        <center>
+            <label htmlFor="contained-button-file">
+              <Input
+                onChange={upload}
+                accept=".xlsx,.xls,.csv"
+                id="contained-button-file"
+                type="file"
+              />
+              <Button
+                variant="contained"
+                component="span"
+                className="my-4"
+                endIcon={<UploadFileIcon />}
+                type="submit"
+              >
+                Upload Excel
+              </Button>
+            </label>
+          </center>
         </form>
     </Box>
    
