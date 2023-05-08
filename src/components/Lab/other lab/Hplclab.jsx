@@ -2,7 +2,7 @@ import {  Alert, Button, Checkbox, Container,  Dialog, DialogActions, DialogCont
 import { Box } from '@mui/system';
 import React, { Fragment, useEffect, useState } from "react";
 import Navbar from '../../Navbar';
-import dayjs from 'dayjs';
+import dayjs from 'dayjs'; 
 import date from 'date-and-time'; 
 import moment from 'moment'   
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -85,17 +85,24 @@ const Hplclab = (props) => {
         axios.get(`${process.env.REACT_APP_DEVELOPMENT}/api/itemsHPLC`,
        {headers:{token:`${accessToken}`}})
        .then(response=>{
-        
-
  
- 
-        if(response){
-          setWorkOrderDate(date.format(new Date(), 'YY-MM'))
-          setMainDate(date.format(new Date(), 'DD-MM-YY'))
-          setCount( parseInt(response.data[0].count)+1    )
-          setOrderBatch(`H${response.data[0].count}`)
- }
-
+//         if(response){
+//           setWorkOrderDate(date.format(new Date(), 'YY-MM'))
+//           setMainDate(date.format(new Date(), 'DD-MM-YY'))
+//           setCount( parseInt(response.data[0].count)+1    )
+//           setOrderBatch(`H${response.data[0].count}`)
+//  }
+        if (response) {
+          setWorkOrderDate(date.format(new Date(), "YY-MM"));
+          setMainDate(date.format(new Date(), "DD-MM-YY"));
+          setCount(parseInt(response.data[0].count) + 1);
+          // setOrderBatch(`${response.data[0].count}`)
+          let num = response.data[0].workOder;
+          let sp = num.split("H-");
+          let cp = parseInt(sp[1]) + 1;
+          setOrderBatch(`H-${cp}`);
+          console.log(cp)
+}
         
         setData(response.data)
         

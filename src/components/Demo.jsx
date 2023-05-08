@@ -22,7 +22,6 @@ import { DatePicker } from '@mui/x-date-pickers';
 import readXlsxFile from "read-excel-file";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import { styled } from "@mui/material/styles";
-
 const Hplclab = (props) => {
 
    
@@ -37,7 +36,7 @@ const Hplclab = (props) => {
     const [value1, setValue1] = React.useState('');
     const [workOrderDate,setWorkOrderDate]=React.useState("")
     const [mainDate,setMainDate]=React.useState("")
-    const [orderBatch,setOrderBatch]=React.useState("H")
+    const [orderBatch,setOrderBatch]=React.useState("PR")
     const [count, setCount] = useState(1)
 
 
@@ -90,12 +89,18 @@ const Hplclab = (props) => {
 
  
  
-        if(response){
-          setWorkOrderDate(date.format(new Date(), 'YY-MM'))
-          setMainDate(date.format(new Date(), 'DD-MM-YY'))
-          setCount( parseInt(response.data[0].count)+1    )
-          setOrderBatch(`H${response.data[0].count}`)
- }
+ 
+        if (response) {
+          setWorkOrderDate(date.format(new Date(), "YY-MM"));
+          setMainDate(date.format(new Date(), "DD-MM-YY"));
+          setCount(parseInt(response.data[0].count) + 1);
+          // setOrderBatch(`${response.data[0].count}`)
+          let num = response.data[0].workOder;
+          let sp = num.split("H-");
+          let cp = parseInt(sp[1]) + 1;
+          setOrderBatch(`H-${cp}`);
+          console.log(cp)
+        }
 
         
         setData(response.data)

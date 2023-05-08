@@ -43,7 +43,6 @@ const Mainlab = (props) => {
   const [update, setUpdate] = useState([]);
   const [showDialog, setShowDialog] = useState(false);
   const [alert, setAlert] = useState(false);
-
   const [value, setValue] = React.useState();
   const [value1, setValue1] = React.useState("");
   const [workOrderDate, setWorkOrderDate] = React.useState("");
@@ -117,9 +116,10 @@ const Mainlab = (props) => {
           setCount(parseInt(response.data[0].count) + 1);
           // setOrderBatch(`${response.data[0].count}`)
           let num = response.data[0].workOder;
-          let sp = num.split("PR-");
+          let sp = num.split("M-");
+          console.log(num)
           let cp = parseInt(sp[1]) + 1;
-          setOrderBatch(`${cp}`);
+          setOrderBatch(`M-${cp}`);
         }
 
         setData(response.data);

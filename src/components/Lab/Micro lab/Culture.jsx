@@ -91,14 +91,25 @@ const Culture = (props) => {
 
  
  
-        if(response){
-          setWorkOrderDate(date.format(new Date(), 'YY-MM'))
-          setMainDate(date.format(new Date(), 'DD-MM-YY'))
-          setCount( parseInt(response.data[0].count)+1    )
-          setOrderBatch(`CS${response.data[0].count}`)
- }
+//         if(response){
+//           setWorkOrderDate(date.format(new Date(), 'YY-MM'))
+//           setMainDate(date.format(new Date(), 'DD-MM-YY'))
+//           setCount( parseInt(response.data[0].count)+1    )
+//           setOrderBatch(`CS${response.data[0].count}`)
+//  }
 
-        
+if (response) {
+  setWorkOrderDate(date.format(new Date(), "YY-MM"));
+  setMainDate(date.format(new Date(), "DD-MM-YY"));
+  setCount(parseInt(response.data[0].count) + 1);
+  // setOrderBatch(`${response.data[0].count}`)
+  let num = response.data[0].workOder;
+  let sp = num.split("CS-");
+  let cp = parseInt(sp[1]) + 1;
+  setOrderBatch(`CS-${cp}`);
+  console.log(cp)
+}
+
         setData(response.data)
         
         let arr = response.data.map((item,index)=>({...item,id:index+1}))

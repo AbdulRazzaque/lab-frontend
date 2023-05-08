@@ -89,7 +89,7 @@ useEffect(()=>{
       />
       </LocalizationProvider>
      <TextField className="mx-2" sx={{width:200}} {...register("name", { required: true, maxLength: 20 })} variant="outlined" id="outlined-basic" label="Name"  required/>
-    <TextField className=" mx-2" sx={{width:200}} {...register("sampleType", { required: true, maxLength: 20 })} variant="outlined" id="outlined-basic" label="sampleType"  required/>
+    <TextField className=" mx-2" sx={{width:200}} {...register("RequiredAnalysis", { required: true, maxLength: 20 })} variant="outlined" id="outlined-basic" label="RequiredAnalysis"  required/>
      <center> <Button variant="contained" type='submit' className='my-3'  >Submit</Button></center> 
      <center> <Button variant="contained"  className='' onClick={()=>{
     setData([])
