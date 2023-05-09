@@ -44,7 +44,11 @@ const Navbar = () => {
             <li><Link className="dropdown-item" to="/Dna">DNA</Link></li>
           </ul>
         </li> 
-            
+        <li className="nav-item ">
+
+        <Link to ="/General" className="nav-link active" >General Search</Link>
+
+        </li>  
       </ul>
 
     </div>

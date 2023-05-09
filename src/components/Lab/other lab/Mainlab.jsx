@@ -77,6 +77,7 @@ const Mainlab = (props) => {
     },
     { title: "Type", field: "sampleType", width: 200 },
     { title: "Test", field: "RequiredAnalysis", width: 200 },
+    { title: "Lab", field: "Lab", width: 200 },
     {
       title: "Action",
       field: "Action",

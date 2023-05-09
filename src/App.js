@@ -20,6 +20,7 @@ import Allparasites from './components/Lab/other lab/Allparasites';
 import Maindetails from './components/previous details/Maindetails';
 import Allparasitesdetails from './components/previous details/Allparasitesdetails';
 import Hplcdetails from './components/previous details/Hplcdetails';
+import General from './components/previous details/General';
 
 
 
@@ -49,6 +50,7 @@ function App() {
         <Route path="Maindetails" element={<Maindetails />} />
         <Route path="Hplcdetails" element={<Hplcdetails/>} />
         <Route path="Allparasitesdetails" element={<Allparasitesdetails />} />
+        <Route path="General" element={<General />} />
        
 
       

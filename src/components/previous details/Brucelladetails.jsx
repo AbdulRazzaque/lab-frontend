@@ -35,11 +35,13 @@ const Brucelladetails = () => {
 
    console.log(obj);
 
-   axios.post(`${process.env.REACT_APP_DEVELOPMENT}/api/getPrevStockInInfo`,{from:date.format(value,'YYYY/MM/DD'),to:date.format(value1,'YYYY/MM/DD'), ...obj},)
+  //  axios.post(`${process.env.REACT_APP_DEVELOPMENT}/api/getPrevStockInInfo`,{from:date.format(value,'YYYY/MM/DD'),to:date.format(value1,'YYYY/MM/DD'), ...obj},)
+   axios.post(`${process.env.REACT_APP_DEVELOPMENT}/api/allPreveStock`,{from:date.format(value,'YYYY/MM/DD'),to:date.format(value1,'YYYY/MM/DD'), ...obj},)
+
       .then(response=>{
        
-        setData(response.data.pre,'response.data')
-        
+        setData(response.data,'response.data')
+        console.log(response.data)
 
       })
  } 
@@ -120,10 +122,12 @@ console.log(data.pre,'data')
         { title: 'Sample NO', field: 'noofSample'},
         { title: 'Sample Type', field: 'sampleType'},
         { title: 'Required Analysis', field: 'RequiredAnalysis'},
+        { title: 'Lab', field: 'Lab',  width:200,},
       { title: 'Date', field: 'date',
       type: 'date',
       dateSetting: {
-        format: 'yyyy/mm/dd'
+        // format: 'yyyy/mm/dd'
+        format:'dd/mm/yyyy'
       },
     },
       ]}

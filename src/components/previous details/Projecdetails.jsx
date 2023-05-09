@@ -121,6 +121,7 @@ console.log(data.pre,'data')
         { title: 'Sample NO', field: 'noofSample'},
         { title: 'Sample Type', field: 'sampleType'},
         { title: 'Required Analysis', field: 'RequiredAnalysis'},
+        { title: 'Lab', field: 'Lab',  width:200,},
       { title: 'Date', field: 'date',
       type: 'date',
       dateSetting: {

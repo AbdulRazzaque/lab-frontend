@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar'
 import MaterialTable from "material-table";
@@ -8,7 +9,7 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import date from 'date-and-time';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-const Hplcdetails = () => {
+const General = () => {
     const defaultMaterialTheme = createTheme();
     const [data, setData] = useState([]);
     const [value, setValue] = React.useState(null);
@@ -18,14 +19,14 @@ const Hplcdetails = () => {
   
     const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZiMDY5ZjJjN2NkYzQwYWI3ZDQ3NDMiLCJpYXQiOjE2NzczOTU2MTUsImV4cCI6MTY3NzQ4MjAxNX0.oyFYN4ItsvjR8Gnspn9P2s3jLvqlkWXRPGDUukeQ_jE"
 
-    const  alldata =()=>{ 
-      axios.get(`${process.env.REACT_APP_DEVELOPMENT}/api/itemsHPLC`,data,
-     {headers:{token:`${accessToken}`}})
-     .then(response=>{
-       console.log('Response',response)
-       setData(response.data)
-     })
-  }
+//     const  alldata =()=>{
+//       axios.get(`${process.env.REACT_APP_DEVELOPMENT}/api/itemsParasites`,data,
+//      {headers:{token:`${accessToken}`}})
+//      .then(response=>{
+//        console.log('Response',response)
+//        setData(response.data)
+//      })
+//   }
   const onSubmit = (stock) =>{
     let obj={
      value,
@@ -36,10 +37,10 @@ const Hplcdetails = () => {
 
    console.log(obj);
 
-   axios.post(`${process.env.REACT_APP_DEVELOPMENT}/api/getPrevStockHPLC`,{from:date.format(value,'YYYY/MM/DD'),to:date.format(value1,'YYYY/MM/DD'), ...obj},)
+   axios.post(`${process.env.REACT_APP_DEVELOPMENT}/api/allPreveStock`,{from:date.format(value,'YYYY/MM/DD'),to:date.format(value1,'YYYY/MM/DD'), ...obj},)
       .then(response=>{
        
-        setData(response.data.pre,'response.data')
+        setData(response.data)
         
 
       })
@@ -47,18 +48,18 @@ const Hplcdetails = () => {
 
 console.log(data.pre,'data')
   useEffect(()=>{
-  alldata()
+//   alldata()
 },[flag])
   return (
     <div>
         <Navbar/>
         <div className='lab'>
 
-        <Link to="/Hplclab"> <p className='' > HPLC</p></Link>  
+        <Link to="/Allparasites"> <p className='' > Parasites</p></Link>  
       </div>
-      <h1 className='text-center my-5 heading'>HPLC Previous Details</h1>
+      <h1 className='text-center my-5 heading'>All Lab Previous Details</h1>
         <div>
-          <div className="container"> 
+          <div className="container">
           <form onSubmit={handleSubmit(onSubmit)}>
    
           <LocalizationProvider 
@@ -114,7 +115,7 @@ console.log(data.pre,'data')
    </div>
         <ThemeProvider theme={defaultMaterialTheme}>
         <MaterialTable
-      title="HPLC Previous Details"
+      title="All Lab Previous Details"
       columns={[
         { title: 'Name', field: 'name' },
         { title: 'work-order', field: 'workOder' },
@@ -144,4 +145,4 @@ console.log(data.pre,'data')
   )
 }
 
-export default Hplcdetails
+export default General
