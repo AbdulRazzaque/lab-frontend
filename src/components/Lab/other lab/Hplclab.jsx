@@ -65,17 +65,17 @@ const Hplclab = (props) => {
 
   const [columns, setColumns] = useState([
     { title: "ID", field: "id", width: 50 },
-    {title: "Date",field: "date",width: 200,renderCell: (param) =>moment.parseZone(param.value).local().format("YYYY/MM/DD"),},
-    { title: "Name", field: "name", width: 200 },
+    {title: "Date",field: "date",width: 150,renderCell: (param) =>moment.parseZone(param.value).local().format("YYYY/MM/DD"),},
+    { title: "Name", field: "name", width: 250 },
     { title: "work-order", field: "workOder", width: 150 },
-    { title: "Sample", field: "noofSample", width: 100 },
-    { title: "Test", field: "RequiredAnalysis", width: 200 },
-    { title: "Type", field: "sampleType", width: 200 },
-    { title: "Lab", field: "Lab", width: 200 },
+    { title: "Sample", field: "noofSample", width: 150 },
+    { title: "Test", field: "RequiredAnalysis", width: 150 },
+    { title: "Type", field: "sampleType", width: 100 },
+    // { title: "Lab", field: "Lab", width: 100 },
     {
       title: "Action",
       field: "Action",
-      width: 150,
+      width: 100,
       renderCell: () => (
         <Fragment>
           <Button onClick={() => setShowDialog(true)}>
@@ -87,7 +87,7 @@ const Hplclab = (props) => {
     {
       title: "Delete",
       field: "Delete",
-      width: 150,
+      width: 100,
       renderCell: () => (
         <Fragment>
           <Button color="error" onClick={() => setAlert(true)}>
@@ -646,8 +646,8 @@ try {
           </center>
         </form>
       </Box>
-
       <Box sx={{ height: 900, width: "100%" }}>
+        
         <DataGridPro
           onRowClick={(item) => setUpdate(item.row)}
           rows={data}
@@ -658,6 +658,7 @@ try {
           apiRef={apiRef}
           experimentalFeatures={{ newEditingApi: true }}
         />
+
       </Box>
     </div>
   );
