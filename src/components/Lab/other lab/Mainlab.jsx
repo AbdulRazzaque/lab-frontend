@@ -65,18 +65,12 @@ const Mainlab = (props) => {
 
   const [columns, setColumns] = useState([
     { title: "ID", field: "id", width: 50 },
-    { title: "work-order", field: "workOder", width: 150 },
+    {title: "Date",field: "date",width: 200,renderCell: (param) =>moment.parseZone(param.value).local().format("YYYY/MM/DD"),},
     { title: "Name", field: "name", width: 200 },
+    { title: "work-order", field: "workOder", width: 150 },
     { title: "Sample", field: "noofSample", width: 100 },
-    {
-      title: "Date",
-      field: "date",
-      width: 200,
-      renderCell: (param) =>
-        moment.parseZone(param.value).local().format("YYYY/MM/DD"),
-    },
-    { title: "Type", field: "sampleType", width: 200 },
     { title: "Test", field: "RequiredAnalysis", width: 200 },
+    { title: "Type", field: "sampleType", width: 200 },
     { title: "Lab", field: "Lab", width: 200 },
     {
       title: "Action",
@@ -242,18 +236,23 @@ const Mainlab = (props) => {
             //   name: item[1],
             //   workOder: item[2],
             // });
+                
 
+            
             let obj = {
-              sampleType: item[5],
-              RequiredAnalysis: item[4],
-              noofSample: item[3],
-              date: item[0],
-              name: item[1],
-              workOder: item[2],
+              sampleType: item[6],
+              RequiredAnalysis: item[5],
+              noofSample: item[4],
+              date: item[1],
+              name: item[2],
+              workOder: item[3],
             };
+            console.log(item,'item')
+
+          
 
             axios
-              .post(`${process.env.REACT_APP_DEVELOPMENT}/api/addMain`, obj, {
+              .post(`${process.env.REACT_APP_DEVELOPMENT}/api/addMain`,obj, {
                 headers: { token: `${accessToken}` },
               })
               .then((response) => {

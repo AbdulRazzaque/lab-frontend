@@ -109,7 +109,7 @@ console.log(data.pre,'data')
      
      >Cleare
      </Button>
-     </center>  
+     </center>   
     </form>
   {/* <center> <p className='my-2'><b>Total=</b></p></center>   */}
    </div>

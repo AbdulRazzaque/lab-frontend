@@ -15,7 +15,7 @@ import Pcrdetails from './components/previous details/Pcrdetails';
 import Projecdetails from './components/previous details/Projecdetails';
 import Signup from './components/account/Signup';
 import Mainlab from './components/Lab/other lab/Mainlab';
-import Hplclab from './components/Lab/other lab/Hplclab';
+import Hplclab from './components/Lab/other lab/Hplclab'; 
 import Allparasites from './components/Lab/other lab/Allparasites';
 import Maindetails from './components/previous details/Maindetails';
 import Allparasitesdetails from './components/previous details/Allparasitesdetails';
@@ -53,7 +53,7 @@ function App() {
         <Route path="General" element={<General />} />
        
 
-      
+       
        
 
       </Routes>
