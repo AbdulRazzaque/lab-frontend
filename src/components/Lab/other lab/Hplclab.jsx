@@ -247,12 +247,12 @@ try {
 
             
             let obj = {
-              sampleType: item[6],
-              RequiredAnalysis: item[5],
-              noofSample: item[4],
-              date: item[1],
-              name: item[2],
-              workOder: item[3],
+              sampleType: item[5],
+              RequiredAnalysis: item[4],
+              noofSample: item[3],
+              date: item[0],
+              name: item[1],
+              workOder: item[2],
             };
             console.log(item,'item')
 
