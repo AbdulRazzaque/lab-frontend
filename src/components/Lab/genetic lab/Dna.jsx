@@ -230,17 +230,6 @@ try {
 
         rows.map((item, id) => {
           if (id !== 0) {
-            // array.push({
-            //   sampleType: item[5],
-            //   RequiredAnalysis: item[4],
-            //   noofSample: item[3],
-            //   date: item[1],
-            //   name: item[1],
-            //   workOder: item[2],
-            // });
-                
-
-            
             let obj = {
               sampleType: item[5],
               RequiredAnalysis: item[4],
@@ -250,9 +239,6 @@ try {
               workOder: item[2],
             };
             console.log(item,'item')
-
-          
-
             axios
               .post(`${process.env.REACT_APP_DEVELOPMENT}/api/addDna`, obj, {
                 headers: { token: `${accessToken}` },
